@@ -18,7 +18,7 @@
 		Produto <?=  $nome; ?>, <?= $preco; ?> não foi adicionado!
 	</p>
 	<?php
-		?
+		}
 	?>
 <?php include("rodape.php"); ?>
 	
