@@ -1,10 +1,8 @@
 <?php include("cabecalho.php"); ?>
-<?php 
 function insereProduto($conexao, $nome, $preco) {
 	$query = "insert into produtos (nome, preco) values ('{$nome}', {$preco})";
 	return  mysqli_query($conexao, $query);
 }
-?>
 <?php 
 	$nome =  $_GET["nome"];
 	$preco = $_GET["preco"];
@@ -12,7 +10,7 @@ function insereProduto($conexao, $nome, $preco) {
 	mysqli_close($conexao);
 ?>
 <?php
-	if(insereProduto($conexao, $nome, $preco)) {
+		if(insereProduto($conexao, $nome, $preco)) {
 ?>
 <p class="alert-success">Produto <?= $nome; ?>, <?= $preco; ?> adicionado com sucesso!</p>
 <?php	
