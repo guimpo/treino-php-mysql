@@ -4,6 +4,6 @@
 	$preco = $_GET["preco"];
 ?>
 
-	Produto <?php echo $nome; ?>, <?php echo $preco; ?> adicionado com sucesso!
+	Produto <?=  $nome; ?>, <?= $preco; ?> adicionado com sucesso!
 </html>
 
