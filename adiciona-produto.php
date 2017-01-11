@@ -9,7 +9,7 @@ function insereProduto($conexao, $nome, $preco) {
 	$nome =  $_GET["nome"];
 	$preco = $_GET["preco"];
 	$conexao = mysqli_connect('localhost', 'root', '', 'loja');
-	$mysqli_close($conexao);
+	mysqli_close($conexao);
 ?>
 <?php
 	if(insereProduto($conexa, $nome, $preco)) {
