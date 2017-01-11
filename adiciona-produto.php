@@ -12,7 +12,7 @@ function insereProduto($conexao, $nome, $preco) {
 	mysqli_close($conexao);
 ?>
 <?php
-	if(insereProduto($conexa, $nome, $preco)) {
+	if(insereProduto($conexao, $nome, $preco)) {
 ?>
 <p class="alert-success">Produto <?= $nome; ?>, <?= $preco; ?> adicionado com sucesso!</p>
 <?php	
