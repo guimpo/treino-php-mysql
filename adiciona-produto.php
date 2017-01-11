@@ -14,7 +14,7 @@
 				?>
 			</div>
 		</div>
-		<p class="alert-sucess">
+		<p class="alert-success">
 			Produto <?=  $nome; ?>, <?= $preco; ?> adicionado com sucesso!
 		</p>
 	</body>
