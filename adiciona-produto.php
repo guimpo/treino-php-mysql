@@ -8,9 +8,10 @@
 	$nome =  $_GET["nome"];
 	$preco = $_GET["preco"];
 	$conexao = mysqli_connect('localhost', 'root', '', 'loja');
-	mysqli_close($conexao);
 
 	if(insereProduto($conexao, $nome, $preco)) {
+	mysqli_close($conexao);
+
 ?>
 <p class="alert-success">Produto <?= $nome; ?>, <?= $preco; ?> adicionado com sucesso!</p>
 <?php	
