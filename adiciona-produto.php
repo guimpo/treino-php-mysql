@@ -12,10 +12,11 @@
 					$nome =  $_GET["nome"];
 					$preco = $_GET["preco"];
 				?>
+				<p class="alert-success">
+					Produto <?=  $nome; ?>, <?= $preco; ?> adicionado com sucesso!
+				</p>
 			</div>
 		</div>
-		<p class="alert-success">
-			Produto <?=  $nome; ?>, <?= $preco; ?> adicionado com sucesso!
-		</p>
+
 	</body>
 </html>
