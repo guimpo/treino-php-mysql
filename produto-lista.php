@@ -4,9 +4,25 @@ include("conecta.php");
 include("banco-produto.php");
 
 $produtos = listaProdutos($conexao);
+?>
+	<table class="table table-striped table-hover table-bordered">
+		<thead>
+			<tr>
+				<th>Produto</th>
+				<th>Nome</th>
+			</tr>
+		</thead>
+<?php
 foreach($produtos as $produto) :
-	echo $produto["nome"];
-	echo $produto["preco"];
+?>
+		<tbody>
+			<tr>
+				<td><?= $produto["nome"] ?></td>
+				<td><?= $produto["preco"] ?></td>
+			</tr>
+		</tbody>
+<?php
 endforeach
 ?>
-<?php include("rodape.php") ?>
+</table>
+<?php include("rodape.php");?>
