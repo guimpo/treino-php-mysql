@@ -17,6 +17,7 @@ $produtos = listaProdutos($conexao);
 				<th>Produto</th>
 				<th>Nome</th>
 				<th>Descrição</th>
+				<th>Categoria</th>
 				<th>Remover</th>
 			</tr>
 		</thead>
@@ -25,9 +26,10 @@ foreach($produtos as $produto) :
 ?>
 		<tbody>
 			<tr>
-				<td><?= $produto["nome"]?></td>
-				<td><?= $produto["preco"]?></td>
-				<td><?= $produto["descricao"]?></td>
+				<td><?=$produto["nome"]?></td>
+				<td><?=$produto["preco"]?></td>
+				<td><?=$produto["descricao"]?></td>
+				<td><?=$produto["categoria_nome"]?></td>
 				<form action="remove-produto.php" method="post">
 				<td><button name="id" value="<?=$produto["id"]?>" class="btn btn-danger">Remover</button></td>
 				</form>
