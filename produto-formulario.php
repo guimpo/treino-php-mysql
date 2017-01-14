@@ -1,6 +1,6 @@
 <?php include("cabecalho.php"); ?>
 	<h1>Formulário de Cadastro</h1>
-	<form action="adiciona-produto.php">
+	<form action="adiciona-produto.php" method="post">
 		<table>
 			<tr>
 				<td>Nome</td>

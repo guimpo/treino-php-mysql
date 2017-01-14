@@ -28,7 +28,9 @@ foreach($produtos as $produto) :
 				<td><?= $produto["nome"]?></td>
 				<td><?= $produto["preco"]?></td>
 				<td><?= $produto["descricao"]?></td>
-				<td ><a href="remove-produto.php?id=<?=$produto["id"];?>" class="text-danger">Remove</a></td>
+				<form action="remove-produto.php" method="post">
+				<td><button name="id" value="<?=$produto["id"]?>" class="btn btn-danger">Remover</button></td>
+				</form>
 			</tr>
 		</tbody>
 <?php
