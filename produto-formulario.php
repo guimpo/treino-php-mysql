@@ -7,7 +7,7 @@ $categorias = listaCategorias($conexao);
 ?>
 	<h1>Formulário de Cadastro</h1>
 	<form action="adiciona-produto.php" method="post">
-		<table>
+		<table class="table">
 			<tr>
 				<td>Nome</td>
 				<td><input class="form-control" type="text" name="nome"></td>
@@ -23,10 +23,12 @@ $categorias = listaCategorias($conexao);
 			<tr>
 				<td>Categorias</td>
 				<td>
+					<select name="categoria_id" class="form-control">
 					<?php	foreach($categorias as $categoria): ?>
-						<input type="radio" name="categoria_id" value="<?=$categoria["id"]?>"><?=$categoria["nome"]?><br/>		
+						<option value="<?=$categoria['id'];?>"><?=$categoria["nome"];?></option>
 					<?php	endforeach ?>
-				</td>
+					</select>
+					</td>
 			</tr>
 			<tr>
 				<td><input class="btn btn-primary" type="submit" value="Cadastrar" /></td>
