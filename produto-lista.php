@@ -16,6 +16,8 @@ $produtos = listaProdutos($conexao);
 			<tr>
 				<th>Produto</th>
 				<th>Nome</th>
+				<th>Descrição</th>
+				<th>Remover</th>
 			</tr>
 		</thead>
 <?php
@@ -23,8 +25,9 @@ foreach($produtos as $produto) :
 ?>
 		<tbody>
 			<tr>
-				<td><?= $produto["nome"] ?></td>
-				<td><?= $produto["preco"] ?></td>
+				<td><?= $produto["nome"]?></td>
+				<td><?= $produto["preco"]?></td>
+				<td><?= $produto["descricao"]?></td>
 				<td ><a href="remove-produto.php?id=<?=$produto["id"];?>" class="text-danger">Remove</a></td>
 			</tr>
 		</tbody>
