@@ -21,6 +21,10 @@ $categorias = listaCategorias($conexao);
 				<td><textarea name="descricao" class="form_control"></textarea></td>
 			</tr>
 			<tr>
+				<td>Situação</td>
+				<td><input type="checkbox" name="usado" value="true">Usado</td>
+			</tr>
+			<tr>
 				<td>Categorias</td>
 				<td>
 					<select name="categoria_id" class="form-control">
@@ -28,7 +32,7 @@ $categorias = listaCategorias($conexao);
 						<option value="<?=$categoria['id'];?>"><?=$categoria["nome"];?></option>
 					<?php	endforeach ?>
 					</select>
-					</td>
+				</td>
 			</tr>
 			<tr>
 				<td><input class="btn btn-primary" type="submit" value="Cadastrar" /></td>
