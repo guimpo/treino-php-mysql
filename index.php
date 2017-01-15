@@ -1,6 +1,6 @@
 <?php include("cabecalho.php"); ?>
 <?php include("logica-usuario.php"); ?>
-
+<?php $usuario = usuarioLogado(); ?>
 <?php
 if(isset($_GET["falhaDeSeguranca"])) {
 ?>
@@ -9,10 +9,10 @@ if(isset($_GET["falhaDeSeguranca"])) {
 } 
 ?>
 <?php
-if(isset($_GET["login"]) && $_GET["login"]==1) {
+if(usuarioEstaLogado()) {
 ?>
 <p class="alert-success">Você está logado!</p>
-<p class="text-success">Você está logado como <?=$_COOKIE["usuario_logado"]?></p>
+<p class="text-success">Você está logado como <?=$usuario?></p>
 <?php
 }
 ?>
