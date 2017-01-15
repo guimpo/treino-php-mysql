@@ -2,12 +2,9 @@
 include("cabecalho.php");
 include("conecta.php");
 include("banco-categoria.php");
-?>
-<?php
-if(!isset($_COOKIE["usuario_logado"])) {
-	header("Location: index.php?falhaDeSeguranca=1");
-	die();
-}
+include("logica-usuario.php");
+
+verificaUsuario();
 ?>
 <?php
 $categorias = listaCategorias($conexao);

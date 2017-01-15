@@ -1,4 +1,6 @@
 <?php include("cabecalho.php"); ?>
+<?php include("logica-usuario.php"); ?>
+
 <?php
 if(isset($_GET["falhaDeSeguranca"])) {
 ?>
@@ -23,7 +25,7 @@ if(isset($_GET["login"]) && $_GET["login"]==0) {
 ?>
 <h1>Bem vindo!</h1>
 <?php
-if(isset($_COOKIE["usuario_logado"])) {
+if(usuarioEstaLogado()) {
 ?>
 <?php
 } else {

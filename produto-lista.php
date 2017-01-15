@@ -2,6 +2,9 @@
 include("cabecalho.php");
 include("conecta.php");
 include("banco-produto.php");
+include("logica-usuario.php");
+
+verificaUsuario();
 
 if(array_key_exists("removido", $_GET) && $_GET["removido"] =='true') :
 ?>
