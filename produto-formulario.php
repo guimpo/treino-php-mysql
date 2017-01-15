@@ -2,7 +2,14 @@
 include("cabecalho.php");
 include("conecta.php");
 include("banco-categoria.php");
-
+?>
+<?php
+if(!isset($_COOKIE["usuario_logado"])) {
+	header("Location: index.php?falhaDeSeguranca=1");
+	die();
+}
+?>
+<?php
 $categorias = listaCategorias($conexao);
 ?>
 	<h1>Formulário de Cadastro</h1>

@@ -1,8 +1,16 @@
 <?php include("cabecalho.php"); ?>
 <?php
+if(isset($_GET["falhaDeSeguranca"])) {
+?>
+<p class="alert-danger">Vocẽ não tem acesso a esta funcionalidade</p>
+<?php
+} 
+?>
+<?php
 if(isset($_GET["login"]) && $_GET["login"]==1) {
 ?>
 <p class="alert-success">Você está logado!</p>
+<p class="text-success">Você está logado como <?=$_COOKIE["usuario_logado"]?></p>
 <?php
 }
 ?>
@@ -13,11 +21,10 @@ if(isset($_GET["login"]) && $_GET["login"]==0) {
 <?php
 }
 ?>
-	<h1>Bem vindo!</h1>
+<h1>Bem vindo!</h1>
 <?php
 if(isset($_COOKIE["usuario_logado"])) {
 ?>
-	<p class="text-success">Você está logado como <?=$_COOKIE["usuario_logado"]?></p>
 <?php
 } else {
 ?>
