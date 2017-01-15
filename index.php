@@ -13,6 +13,13 @@ if(isset($_GET["login"]) && $_GET["login"]==0) {
 <?php
 }
 ?>
+<?php
+if(isset($_COOKIE["usuario_logado"])) {
+?>
+	<p class="text-success">Você está logado como <?=$_COOKIE["usuario_logado"]?></p>
+<?php
+}
+?>
 
 	<h1>Bem vindo!</h1>
 <table class="table">
