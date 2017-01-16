@@ -6,22 +6,26 @@ function usuarioEstaLogado() {
 
 function verificaUsuario() {
 	if(!usuarioEstaLogado()) {
-		header("Location: index.php?falhaDeSeguranca=1");
+		$_SESSION["danger"] = "Você não tem acesso a esta funcionalidade";
+		header("Location: index.php");
 		die();
 	}
 }
 
-function usuarioLogado() {
+	function usuarioLogado() {
 	return $_SESSION["usuario_logado"];
 }
 
 function logaUsuario($email) {
 	$_SESSION["usuario_logado"] = $email;
-	header("Location: index.php?login=1");
+	header("Location: index.php");
+	die();
 }
 
 function logout() {
 	session_destroy();
-	header("Location: index.php?logout=true");
+	session_start();
+	$_SESSION["success"] = "Deslogado com sucesso!";
+	header("Location: index.php");
 }
 

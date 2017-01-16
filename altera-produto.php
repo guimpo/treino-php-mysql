@@ -13,7 +13,8 @@ $categoria = $_POST["categoria_id"];
 $usado = array_key_exists("usado", $_POST) ? 1 : 2;
 
 alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria, $usado);
-header("Location: produto-lista.php?alterado=true");
+header("Location: produto-lista.php");
+$_SESSION["success"] = "Produto {$nome}, alterado!";
 die();
 ?>
 

@@ -1,41 +1,26 @@
-<?php include("cabecalho.php"); ?>
-<?php include("logica-usuario.php"); ?>
-<?php $usuario = usuarioLogado(); ?>
+<?php include("cabecalho.php"); 
+include("logica-usuario.php"); ?>
+
+<?php if(isset($_SESSION["success"])): ?>
+	<p class="alert-success"><?=$_SESSION["success"]?></p>
+<?php unset($_SESSION["success"]);
+endif; ?>
+
+<?php if(isset($_SESSION["danger"])): ?>
+	<p class="alert-danger"><?=$_SESSION["danger"]?></p>
 <?php
-if(isset($_GET["logout"]) && $_GET["logout"] == true) {
-?>
-<p class="alert-success">Deslogado com sucesso</p>
-<?php } ?>
-<?php
-if(isset($_GET["falhaDeSeguranca"])) {
-?>
-<p class="alert-danger">Vocẽ não tem acesso a esta funcionalidade</p>
-<?php
-} 
-?>
-<?php
-if(usuarioEstaLogado()) {
-?>
-<p class="alert-success">Você está logado!</p>
-<p class="text-success">Você está logado como <?=$usuario?></p>
+unset($_SESSION["danger"]);
+endif; ?>
+
+<?php if(usuarioEstaLogado()): ?>
+<p class="text-success">Você está logado como <?=$_SESSION["usuario_logado"]?></p>
 <a href="logout.php">Deslogar</a>
-<?php
-}
-?>
-<?php
-if(isset($_GET["login"]) && $_GET["login"]==0) {
-?>
-<p class="alert-danger">Usuário ou senha incorreta</p>
-<?php
-}
-?>
+<?php endif; ?>
+
 <h1>Bem vindo!</h1>
-<?php
-if(usuarioEstaLogado()) {
-?>
-<?php
-} else {
-?>
+
+<?php if(usuarioEstaLogado()): ?>
+<?php else: ?>
 <table class="table">
 	<form action="login.php" method="post">
 		<tr>
@@ -51,5 +36,5 @@ if(usuarioEstaLogado()) {
 		</tr>
 	</form>
 </table>
-<?php } ?>
+<?php endif; ?>
 <?php include("rodape.php"); ?>

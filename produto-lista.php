@@ -6,10 +6,11 @@ include("logica-usuario.php");
 
 verificaUsuario();
 
-if(array_key_exists("removido", $_GET) && $_GET["removido"] =='true') :
+if(isset($_SESSION["success"])) :
 ?>
-	<p class="alert-success">Produto removido</p>
+<p class="alert-success"><?=$_SESSION["success"]?></p>
 <?php
+unset($_SESSION["success"]);
 endif;
 
 $produtos = listaProdutos($conexao);
