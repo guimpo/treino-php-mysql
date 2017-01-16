@@ -17,18 +17,18 @@ else :
 	$usado = "false";
 endif;
 
-	if(insereProduto($conexao, $nome, $preco, $descricao, $categoria, $usado)) : 
-?>
-<p class="text-success">Produto <?= $nome; ?>, <?= $preco; ?> adicionado com sucesso!</p>
-<?php	
-	else :
-		$msg = mysqli_error($conexao);
+if(insereProduto($conexao, $nome, $preco, $descricao, $categoria, $usado)) : 
+	$_SESSION["success"] = "Produto {$nome}, {$preco}, adicionado com sucesso!";
+	header("Location: produto-lista.php");
+	die();
+else :
+	$msg = mysqli_error($conexao);
 ?>
 <p class="text-danger">
 Produto <?=  $nome; ?>, <?= $preco; ?> não foi adicionado: <?= $msg ?>
 </p>
 <?php
-	endif	
+	endif;	
 ?>
 <?php include("rodape.php"); ?>
 	

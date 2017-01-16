@@ -1,3 +1,6 @@
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+?>
 <html>
 	<head>
 		<title>Minha Loja</title>
@@ -5,7 +8,9 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/loja.css">	
 	</head>
-
+<?php
+include("mostra-alerta.php");
+?>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
@@ -23,3 +28,7 @@
 	</div>
 <div class="container">
 <div class="principal">
+<?php
+mostraAlerta("danger");
+mostraAlerta("success");
+?>
