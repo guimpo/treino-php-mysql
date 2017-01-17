@@ -6,6 +6,7 @@ include("banco-produto.php");
 
 $id = $_POST["id"];
 $categorias = listaCategorias($conexao);
+$produto = array();
 $produto = buscaProduto($conexao, $id);
 ?>
 	<h1>Formulário de Alteração</h1>
@@ -14,30 +15,15 @@ $produto = buscaProduto($conexao, $id);
 			<tr>
 				<td>Nome</td>
 				<input type="hidden" name=id value=<?=$id?>>
-				<td><input class="form-control" type="text" name="nome" value=<?=$produto["nome"]?>></td>
-			</tr>
-			<tr>
-				<td>Preço</td>
-				<td><input class="form-control" type="number" name="preco" value=<?=$produto["preco"]?>></td>
-			</tr>
-			<tr>
-				<td>Descrição</td>
-				<td><textarea name="descricao" class="form_control"><?=$produto["descricao"]?></textarea></td>
-			</tr>
-			<tr>
-				<td>Situação</td>
-				<?php $produtoUsado = $produto["usado"] == 1 ? "checked" : ""; ?>
-				<td>
-					<input type="checkbox" name="usado" value="true" <?=$produtoUsado?>>Usado
-				</td>
-			</tr>
-			<tr>
-				<td>Categorias</td>
-				<td>
+					<?php
+						include("produto-formulario-base.php");
+					?>
 					<select name="categoria_id" class="form-control">
-					<?php	foreach($categorias as $categoria):
-						$select = ($categoria["id"] == $produto["categoria_id"] ? "selected" : "");?>
-						<option value="<?=$categoria['id'];?>" <?=$select?>><?=$categoria["nome"];?></option>
+					<?php
+						foreach($categorias as $categoria):
+							$selecionado = ($categoria["id"] == $produto["categoria_id"] ? "selected" : "");
+					?>
+						<option value="<?=$categoria['id'];?>" <?=$selecionado?>><?=$categoria["nome"];?></option>
 					<?php	endforeach?>
 					</select>
 				</td>

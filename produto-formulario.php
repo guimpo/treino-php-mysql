@@ -8,29 +8,14 @@ verificaUsuario();
 ?>
 <?php
 $categorias = listaCategorias($conexao);
+$produto = array("nome" => "", "preco" => "", "descricao" => "", "categoria_id" => "1", "usado" => "");
 ?>
 	<h1>Formulário de Cadastro</h1>
 	<form action="adiciona-produto.php" method="post">
 		<table class="table">
 			<tr>
 				<td>Nome</td>
-				<td><input class="form-control" type="text" name="nome"></td>
-			</tr>
-			<tr>
-				<td>Preço</td>
-				<td><input class="form-control" type="number" name="preco"></td>
-			</tr>
-			<tr>
-				<td>Descrição</td>
-				<td><textarea name="descricao" class="form_control"></textarea></td>
-			</tr>
-			<tr>
-				<td>Situação</td>
-				<td><input type="checkbox" name="usado" value="true">Usado</td>
-			</tr>
-			<tr>
-				<td>Categorias</td>
-				<td>
+					<?php include("produto-formulario-base.php"); ?>
 					<select name="categoria_id" class="form-control">
 					<?php	foreach($categorias as $categoria): ?>
 						<option value="<?=$categoria['id'];?>"><?=$categoria["nome"];?></option>
