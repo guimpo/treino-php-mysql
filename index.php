@@ -1,5 +1,5 @@
-<?php include("cabecalho.php"); 
-include("logica-usuario.php");
+<?php require_once("cabecalho.php"); 
+require_once("logica-usuario.php");
 ?>
 
 <?php if(usuarioEstaLogado()): ?>
@@ -27,4 +27,4 @@ include("logica-usuario.php");
 	</form>
 </table>
 <?php endif; ?>
-<?php include("rodape.php"); ?>
+<?php require_once("rodape.php"); ?>

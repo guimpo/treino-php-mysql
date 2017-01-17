@@ -1,8 +1,7 @@
 <?php
-include("cabecalho.php");
-include("conecta.php");
-include("banco-categoria.php");
-include("logica-usuario.php");
+require_once("cabecalho.php");
+require_once("banco-categoria.php");
+require_once("logica-usuario.php");
 
 verificaUsuario();
 ?>
@@ -15,7 +14,7 @@ $produto = array("nome" => "", "preco" => "", "descricao" => "", "categoria_id" 
 		<table class="table">
 			<tr>
 				<td>Nome</td>
-					<?php include("produto-formulario-base.php"); ?>
+					<?php require_once("produto-formulario-base.php"); ?>
 					<select name="categoria_id" class="form-control">
 					<?php	foreach($categorias as $categoria): ?>
 						<option value="<?=$categoria['id'];?>"><?=$categoria["nome"];?></option>
@@ -28,5 +27,5 @@ $produto = array("nome" => "", "preco" => "", "descricao" => "", "categoria_id" 
 			</tr>
 		</table>
 	</form>
-<?php include("rodape.php"); ?>
+<?php require_once("rodape.php"); ?>
 

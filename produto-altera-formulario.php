@@ -1,8 +1,7 @@
 <?php
-include("cabecalho.php");
-include("conecta.php");
-include("banco-categoria.php");
-include("banco-produto.php");
+require_once("cabecalho.php");
+require_once("banco-categoria.php");
+require_once("banco-produto.php");
 
 $id = $_POST["id"];
 $categorias = listaCategorias($conexao);
@@ -16,7 +15,7 @@ $produto = buscaProduto($conexao, $id);
 				<td>Nome</td>
 				<input type="hidden" name=id value=<?=$id?>>
 					<?php
-						include("produto-formulario-base.php");
+						require_once("produto-formulario-base.php");
 					?>
 					<select name="categoria_id" class="form-control">
 					<?php
@@ -33,5 +32,5 @@ $produto = buscaProduto($conexao, $id);
 			</tr>
 		</table>
 	</form>
-<?php include("rodape.php"); ?>
+<?php require_once("rodape.php"); ?>
 

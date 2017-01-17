@@ -1,4 +1,4 @@
-<?php include("cabecalho.php")?>
+<?php require_once("cabecalho.php")?>
 	<p>Testando for</p>
 	<form action="sobre.php">
 		<input type="number" name="length"/>
@@ -19,4 +19,4 @@
 			}
 		}
 	?>
-<?php include("rodape.php")?>
+<?php require_once("rodape.php")?>

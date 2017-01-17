@@ -1,4 +1,4 @@
-				<td><input class="form-control" type="text" name="nome" value="<?=$produto["nome"]?>"></td>
+				<td><input class="form-control" type="text" name="nome" value="<?=  htmlentities($produto["nome"], ENT_QUOTES); ?>"></td>
 			</tr>
 			<tr>
 				<td>Preço</td>
