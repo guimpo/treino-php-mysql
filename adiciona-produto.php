@@ -16,7 +16,7 @@ else :
 	$usado = "false";
 endif;
 
-if(insereProduto($conexao, $nome, $preco, $descricao, $categoria, $usado)) : 
+if(insereProduto($conexao, $nome, $preco, $descricao, $categoria, $usado)) :
 	$_SESSION["success"] = "Produto {$nome}, {$preco}, adicionado com sucesso!";
 	header("Location: produto-lista.php");
 	die();
@@ -27,7 +27,6 @@ else :
 Produto <?=  $nome; ?>, <?= $preco; ?> não foi adicionado: <?= $msg ?>
 </p>
 <?php
-	endif;	
+	endif;
 ?>
 <?php require_once("rodape.php"); ?>
-	

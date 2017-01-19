@@ -16,9 +16,3 @@ header("Location: produto-lista.php");
 $_SESSION["success"] = "Produto {$nome}, alterado!";
 die();
 ?>
-
-
-
-
-
-

@@ -14,7 +14,7 @@ function listaProdutos($conexao) {
 function insereProduto($conexao, $nome, $preco, $descricao, $categoria, $usado) {
 	$nome = mysqli_real_escape_string($conexao, $nome);
 	$preco = mysqli_real_escape_string($conexao, $preco);
-	$descricao = mysqli_real_escape_string($conexao, $descricao);	
+	$descricao = mysqli_real_escape_string($conexao, $descricao);
 	$categoria = mysqli_real_escape_string($conexao, $categoria);
 	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado})";
 	return  mysqli_query($conexao, $query);
@@ -30,7 +30,7 @@ function buscaProduto($conexao, $id) {
 function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria, $usado) {
 	$nome = mysqli_real_escape_string($conexao, $nome);
 	$preco = mysqli_real_escape_string($conexao, $preco);
-	$descricao = mysqli_real_escape_string($conexao, $descricao);	
+	$descricao = mysqli_real_escape_string($conexao, $descricao);
 	$categoria = mysqli_real_escape_string($conexao, $categoria);
 	$query = "UPDATE produtos SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}', categoria_id = {$categoria}, usado = {$usado} WHERE id = {$id}";
 	return mysqli_query($conexao, $query);
