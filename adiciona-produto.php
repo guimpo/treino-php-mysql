@@ -13,7 +13,7 @@ $usado = (array_key_exists("usado", $_POST) ? 1 : 0);
 
 $produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
 
-if(insereProduto($conexao, $nome, $preco, $descricao, $produto->getCategoria()->getId(), $usado)) :
+if(insereProduto($conexao, $produto)) :
 	$_SESSION["success"] = "Produto {$nome}, {$preco}, adicionado com sucesso!";
 	header("Location: produto-lista.php");
 else :

@@ -11,11 +11,12 @@ function listaProdutos($conexao) {
 	return $produtos;
 }
 
-function insereProduto($conexao, $nome, $preco, $descricao, $categoria, $usado) {
-	$nome = mysqli_real_escape_string($conexao, $nome);
-	$preco = mysqli_real_escape_string($conexao, $preco);
-	$descricao = mysqli_real_escape_string($conexao, $descricao);
-	$categoria = mysqli_real_escape_string($conexao, $categoria);
+function insereProduto($conexao, $produto) {
+	$nome = mysqli_real_escape_string($conexao, $produto->getNome());
+	$preco = mysqli_real_escape_string($conexao, $produto->getPreco());
+	$descricao = mysqli_real_escape_string($conexao, $produto->getDescricao());
+	$usado = mysqli_real_escape_string($conexao, $produto->getUsado());
+	$categoria = mysqli_real_escape_string($conexao, $produto->getCategoria()->getId());
 	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado})";
 	return  mysqli_query($conexao, $query);
 }
@@ -41,5 +42,3 @@ function removeProduto($conexao, $id) {
 	$query = "DELETE FROM produtos WHERE id = {$id}";
 	return mysqli_query($conexao, $query);
 }
-
-
