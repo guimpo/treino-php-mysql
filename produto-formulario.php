@@ -24,7 +24,9 @@ $produto = new Produto($nome, $preco, $descricao, $usado, $categorias[0]);
 				</td>
 			</tr>
 			<tr>
-				<td><input class="btn btn-primary" type="submit" value="Cadastrar" /></td>
+				<td>
+					<input class="btn btn-primary" type="submit" value="Cadastrar">
+				</td>
 			</tr>
 		</table>
 	</form>

@@ -39,7 +39,9 @@ $produto->getCategoria()->setId($produto_array["categoria_id"]);
 				</td>
 			</tr>
 			<tr>
-				<td><input class="btn btn-primary" type="submit" value="Alterar" /></td>
+				<td>
+					<input class="btn btn-primary" type="submit" value="Alterar">
+				</td>
 			</tr>
 		</table>
 	</form>

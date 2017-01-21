@@ -5,13 +5,6 @@ require_once("logica-usuario.php");
 
 verificaUsuario();
 
-if(isset($_SESSION["success"])) :
-?>
-<p class="alert-success"><?=$_SESSION["success"]?></p>
-<?php
-unset($_SESSION["success"]);
-endif;
-
 $produtos = listaProdutos($conexao);
 ?>
 <table class="table table-striped table-hover table-bordered">
@@ -39,7 +32,9 @@ $produtos = listaProdutos($conexao);
 					<td><button name="id" value="<?= $produto->getId() ?>" class="btn btn-primary">Alterar</button></td>
 				</form>
 			<form action="remove-produto.php" method="post">
-			<td><button name="id" value="<?= $produto->getId() ?>" class="btn btn-danger">Remover</button></td>
+				<td>
+					<button name="id" value="<?= $produto->getId() ?>" class="btn btn-danger">Remover</button>
+				</td>
 			</form>
 		</tr>
 	</tbody>
