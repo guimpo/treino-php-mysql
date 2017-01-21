@@ -29,17 +29,17 @@ $produtos = listaProdutos($conexao);
 	<?php foreach($produtos as $produto) : ?>
 	<tbody>
 		<tr>
-			<td><?=$produto["nome"]?></td>
-			<td><?=$produto["preco"]?></td>
-			<td><?=$produto["descricao"]?></td>
-			<?php $produtoUsado = $produto["usado"] == 1 ? "checked" : ""; ?>
-			<td><input type="checkbox" disabled <?=$produtoUsado?>>Usado</td>
-			<td><?=$produto["categoria_nome"]?></td>
+			<td><?= $produto->getNome() ?></td>
+			<td><?= $produto->getPreco() ?></td>
+			<td><?= $produto->getDescricao() ?></td>
+			<?php $produtoUsado = $produto->getUsado() == 1 ? "checked" : ""; ?>
+			<td><input type="checkbox" disabled <?= $produtoUsado ?>>Usado</td>
+			<td><?=	$produto->getCategoria()->getNome() ?></td>
 				<form action="produto-altera-formulario.php" method="post">
-					<td><button name="id" value="<?=$produto["id"]?>" class="btn btn-primary">Alterar</button></td>
-			</form>
+					<td><button name="id" value="<?= $produto->getId() ?>" class="btn btn-primary">Alterar</button></td>
+				</form>
 			<form action="remove-produto.php" method="post">
-			<td><button name="id" value="<?=$produto["id"]?>" class="btn btn-danger">Remover</button></td>
+			<td><button name="id" value="<?= $produto->getId() ?>" class="btn btn-danger">Remover</button></td>
 			</form>
 		</tr>
 	</tbody>
