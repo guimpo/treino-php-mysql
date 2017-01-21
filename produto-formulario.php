@@ -17,8 +17,8 @@ $produto = array("nome" => "", "preco" => "", "descricao" => "", "categoria_id" 
 					<?php require_once("produto-formulario-base.php"); ?>
 					<select name="categoria_id" class="form-control">
 					<?php	foreach($categorias as $categoria): ?>
-						<option value="<?=$categoria['id'];?>"><?=$categoria["nome"];?></option>
-					<?php	endforeach ?>
+						<option value="<?= $categoria->getId() ?>"><?= $categoria->getNome() ?></option>
+					<?php	endforeach; ?>
 					</select>
 				</td>
 			</tr>
@@ -28,4 +28,3 @@ $produto = array("nome" => "", "preco" => "", "descricao" => "", "categoria_id" 
 		</table>
 	</form>
 <?php require_once("rodape.php"); ?>
-

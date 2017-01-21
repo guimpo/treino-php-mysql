@@ -9,15 +9,15 @@ class Categoria {
     $this->nome = $nome;
   }
 
-  // function getId() {
-  //   return  $this->id;
-  // }
+  function getId() {
+    return  $this->id;
+  }
   // function setId($id) {
   //   $this->id = $id;
   // }
-  // function getNome() {
-  //   return  $this->nome;
-  // }
+  function getNome() {
+    return  $this->nome;
+  }
   // function setNome($nome) {
   //   $this->nome = $nome;
   // }
