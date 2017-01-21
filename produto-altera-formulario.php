@@ -8,13 +8,7 @@ $produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
 $produto->setId($_POST["id"]);
 
 $categorias = listaCategorias($conexao);
-
-$produto_array = buscaProduto($conexao, $produto);
-$produto->setNome($produto_array["nome"]);
-$produto->setPreco($produto_array["preco"]);
-$produto->setDescricao($produto_array["descricao"]);
-$produto->setUsado($produto_array["usado"]);
-$produto->getCategoria()->setId($produto_array["categoria_id"]);
+$produto = buscaProduto($conexao, $produto);
 
 ?>
 	<h1>Formulário de Alteração</h1>

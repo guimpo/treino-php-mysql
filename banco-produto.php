@@ -32,7 +32,13 @@ function buscaProduto($conexao, Produto $produto) {
 	$id = mysqli_real_escape_string($conexao, $produto->getid());
 	$query = "SELECT * FROM produtos WHERE id = {$id}";
 	$resultado =  mysqli_query($conexao, $query);
-	return mysqli_fetch_assoc($resultado);
+	$produto_array =  mysqli_fetch_assoc($resultado);
+	$categoria = new Categoria($produto_array["categoria_id"], $nome);
+	$produto = new Produto($produto_array["nome"], $produto_array["preco"],
+												 $produto_array["descricao"], $produto_array["usado"],
+												 $categoria);
+	$produto->setId($produto_array["id"]);
+	return $produto;
 }
 
 function alteraProduto($conexao, Produto $produto) {
