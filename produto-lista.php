@@ -28,9 +28,11 @@ $produtos = listaProdutos($conexao);
 			<?php $produtoUsado = $produto->getUsado() == 1 ? "checked" : ""; ?>
 			<td><input type="checkbox" disabled <?= $produtoUsado ?>>Usado</td>
 			<td><?=	$produto->getCategoria()->getNome() ?></td>
-				<form action="produto-altera-formulario.php" method="post">
-					<td><button name="id" value="<?= $produto->getId() ?>" class="btn btn-primary">Alterar</button></td>
-				</form>
+			<form action="produto-altera-formulario.php" method="post">
+				<td>
+					<button name="id" value="<?= $produto->getId() ?>" class="btn btn-primary">Alterar</button>
+				</td>
+			</form>
 			<form action="remove-produto.php" method="post">
 				<td>
 					<button name="id" value="<?= $produto->getId() ?>" class="btn btn-danger">Remover</button>

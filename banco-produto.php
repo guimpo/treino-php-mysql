@@ -47,8 +47,8 @@ function alteraProduto($conexao, Produto $produto) {
 	return mysqli_query($conexao, $query);
 }
 
-function removeProduto($conexao, $id) {
-	$id = mysqli_real_escape_string($conexao, $id);
+function removeProduto($conexao, Produto $produto) {
+	$id = mysqli_real_escape_string($conexao, $produto->getId());
 	$query = "DELETE FROM produtos WHERE id = {$id}";
 	return mysqli_query($conexao, $query);
 }
