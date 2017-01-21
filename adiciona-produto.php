@@ -8,15 +8,12 @@ verificaUsuario();
 $nome =  $_POST["nome"];
 $preco = $_POST["preco"];
 $descricao = $_POST["descricao"];
-$categoria = $_POST["categoria_id"];
+$categoria = new Categoria($_POST["categoria_id"], $_POST["categoria_nome"]);
+$usado = (array_key_exists("usado", $_POST) ? 1 : 0);
 
-if(array_key_exists("usado", $_POST)) :
-	$usado = "true";
-else :
-	$usado = "false";
-endif;
+$produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
 
-if(insereProduto($conexao, $nome, $preco, $descricao, $categoria, $usado)) :
+if(insereProduto($conexao, $nome, $preco, $descricao, $produto->getCategoria()->getId(), $usado)) :
 	$_SESSION["success"] = "Produto {$nome}, {$preco}, adicionado com sucesso!";
 	header("Location: produto-lista.php");
 	die();

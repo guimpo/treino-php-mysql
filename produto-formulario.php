@@ -20,6 +20,7 @@ $produto = new Produto($nome, $preco, $descricao, 0, $categorias[0]);
 						<option value="<?= $categoria->getId() ?>"><?= $categoria->getNome() ?></option>
 					<?php	endforeach; ?>
 					</select>
+					<input type="hidden" name="categoria_nome" value="<?= $categoria->getNome() ?>">
 				</td>
 			</tr>
 			<tr>
