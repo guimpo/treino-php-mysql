@@ -6,9 +6,11 @@ error_reporting(E_ALL ^ E_NOTICE);
 		<title>Minha Loja</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/loja.css">	
+		<link rel="stylesheet" href="css/loja.css">
 	</head>
 <?php
+require_once("class/Produto.php");
+require_once("class/Categoria.php");
 require_once("mostra-alerta.php");
 ?>
 <body>
