@@ -3,26 +3,37 @@ require_once("cabecalho.php");
 require_once("banco-categoria.php");
 require_once("banco-produto.php");
 
-$id = $_POST["id"];
+$categoria = new Categoria($categoria_id, $categoria_nome);
+$produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
+$produto->setId($_POST["id"]);
+
 $categorias = listaCategorias($conexao);
-$produto = array();
-$produto = buscaProduto($conexao, $id);
+
+$produto_array = buscaProduto($conexao, $produto);
+$produto->setNome($produto_array["nome"]);
+$produto->setPreco($produto_array["preco"]);
+$produto->setDescricao($produto_array["descricao"]);
+$produto->setUsado($produto_array["usado"]);
+$produto->getCategoria()->setId($produto_array["categoria_id"]);
+
 ?>
 	<h1>Formulário de Alteração</h1>
 	<form action="altera-produto.php" method="post">
 		<table class="table">
 			<tr>
 				<td>Nome</td>
-				<input type="hidden" name=id value=<?=$id?>>
+				<input type="hidden" name=id value=<?= $produto->getId() ?>>
 					<?php
 						require_once("produto-formulario-base.php");
 					?>
 					<select name="categoria_id" class="form-control">
 					<?php
 						foreach($categorias as $categoria):
-							$selecionado = ($categoria["id"] == $produto["categoria_id"] ? "selected" : "");
+							$selecionado = ($categoria->getId() == $produto->getCategoria()->getId() ? "selected" : "");
 					?>
-						<option value="<?=$categoria['id'];?>" <?=$selecionado?>><?=$categoria["nome"];?></option>
+							<option value="<?= $categoria->getId() ?>" <?= $selecionado ?>>
+								<?=$categoria->getNome() ?>
+							</option>
 					<?php	endforeach?>
 					</select>
 				</td>
@@ -33,4 +44,3 @@ $produto = buscaProduto($conexao, $id);
 		</table>
 	</form>
 <?php require_once("rodape.php"); ?>
-

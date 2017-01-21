@@ -1,4 +1,6 @@
 <?php
+require_once("class/Categoria.php");
+require_once("class/Produto.php");
 require_once("banco-produto.php");
 require_once("logica-usuario.php");
 
@@ -8,11 +10,13 @@ $id = $_POST["id"];
 $nome = $_POST["nome"];
 $preco = $_POST["preco"];
 $descricao = $_POST["descricao"];
-$categoria = $_POST["categoria_id"];
-$usado = array_key_exists("usado", $_POST) ? 1 : 2;
+$usado = $_POST["usado"];
+$categoria = new Categoria($_POST["categoria_id"], $categoria_nome);
 
-alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria, $usado);
+$produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
+$produto->setId($id);
+
+alteraProduto($conexao, $produto);
 header("Location: produto-lista.php");
 $_SESSION["success"] = "Produto {$nome}, alterado!";
-die();
 ?>

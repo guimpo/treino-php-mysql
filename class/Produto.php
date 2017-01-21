@@ -45,13 +45,15 @@ class Produto {
     return $this->usado;
   }
   function setUsado($usado) {
-    $this->usado = $usado == NULL ? 0 : 1;
+    if($usado == 1 || $usado == "true") {
+        $this->usado = 1;
+    } else {
+      $this->usado = 0;
+    }
+
   }
   function getCategoria() {
     return $this->categoria;
-  }
-  function setCategoria($categoria) {
-    $this->categoria = $categoria;
   }
 }
 ?>
