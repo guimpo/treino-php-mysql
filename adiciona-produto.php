@@ -16,14 +16,9 @@ $produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
 if(insereProduto($conexao, $nome, $preco, $descricao, $produto->getCategoria()->getId(), $usado)) :
 	$_SESSION["success"] = "Produto {$nome}, {$preco}, adicionado com sucesso!";
 	header("Location: produto-lista.php");
-	die();
 else :
 	$msg = mysqli_error($conexao);
-?>
-<p class="text-danger">
-Produto <?=  $nome; ?>, <?= $preco; ?> não foi adicionado: <?= $msg ?>
-</p>
-<?php
-	endif;
-?>
-<?php require_once("rodape.php"); ?>
+	$_SESSION["danger"] = "Produto {$nome} não foi adicionado: {$msg}";
+	header("Location: produto-formulario.php");
+endif;
+die();
