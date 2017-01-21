@@ -9,8 +9,7 @@ $nome =  $_POST["nome"];
 $preco = $_POST["preco"];
 $descricao = $_POST["descricao"];
 $categoria = new Categoria($_POST["categoria_id"], $_POST["categoria_nome"]);
-$usado = (array_key_exists("usado", $_POST) ? 1 : 0);
-
+$usado = $_POST["usado"];
 $produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
 
 if(insereProduto($conexao, $produto)) :

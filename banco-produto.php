@@ -17,6 +17,7 @@ function insereProduto($conexao, $produto) {
 	$descricao = mysqli_real_escape_string($conexao, $produto->getDescricao());
 	$usado = mysqli_real_escape_string($conexao, $produto->getUsado());
 	$categoria = mysqli_real_escape_string($conexao, $produto->getCategoria()->getId());
+	
 	$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado})";
 	return  mysqli_query($conexao, $query);
 }

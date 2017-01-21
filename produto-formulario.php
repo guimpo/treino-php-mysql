@@ -7,7 +7,7 @@ verificaUsuario();
 ?>
 <?php
 $categorias = listaCategorias($conexao);
-$produto = new Produto($nome, $preco, $descricao, 0, $categorias[0]);
+$produto = new Produto($nome, $preco, $descricao, $usado, $categorias[0]);
 ?>
 	<h1>Formulário de Cadastro</h1>
 	<form action="adiciona-produto.php" method="post">

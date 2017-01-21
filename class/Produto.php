@@ -13,7 +13,7 @@ class Produto {
     $this->nome = $nome;
     $this->preco = $preco;
     $this->descricao = $descricao;
-    $this->usado = $usado;
+    $this->setUsado($usado);
     $this->categoria = $categoria;
   }
 
@@ -45,7 +45,7 @@ class Produto {
     return $this->usado;
   }
   function setUsado($usado) {
-    $this->usado = $usado;
+    $this->usado = $usado == NULL ? 0 : 1;
   }
   function getCategoria() {
     return $this->categoria;
