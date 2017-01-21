@@ -21,8 +21,7 @@ class Produto {
     return $this->id;
   }
   function setId($id) {
-    $this->id = $id
+    $this->id = $id;
   }
 }
-
 ?>
