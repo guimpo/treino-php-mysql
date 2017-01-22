@@ -11,7 +11,9 @@ class Produto {
 
   function __construct($nome, $preco, $descricao, $usado, Categoria $categoria) {
     $this->nome = $nome;
-    $this->preco = $preco;
+    if($preco > 0) {
+      $this->preco = $preco;
+    }
     $this->descricao = $descricao;
     $this->setUsado($usado);
     $this->categoria = $categoria;
@@ -26,22 +28,11 @@ class Produto {
   function getNome() {
     return $this->nome;
   }
-  function setNome($nome) {
-    $this->nome = $nome;
-  }
   function getPreco() {
     return $this->preco;
   }
-  function setPreco($preco) {
-    if($preco > 0) {
-      $this->preco = $preco;
-    }
-  }
   function getDescricao() {
     return $this->descricao;
-  }
-  function setDescricao($descricao) {
-    $this->descricao = $descricao;
   }
   function getUsado() {
     return $this->usado;
@@ -71,6 +62,18 @@ class Produto {
       return $this->preco + 30;
     }
     return  $this->preco + 2;
+  }
+
+  function __toString() {
+    return "</br>id:" . $this->id .
+           "</br>nome: " . $this->nome .
+           "</br>preco: " . $this->preco .
+           "</br>desconto: " . $this->precoComDesconto(0.5) .
+           "</br>descricao: " . $this->descricao .
+           "</br>usado?: " .  $this->usado .
+           "</br>categoria_id: " . $this->categoria->getId() .
+           "</br>categoria_nome: " . $this->categoria->getNome() .
+           "</br>frete: " . $this->precoComFrete(2);
   }
 }
 ?>
