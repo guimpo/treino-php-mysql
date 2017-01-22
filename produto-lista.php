@@ -12,8 +12,9 @@ $produtos = listaProdutos($conexao);
 		<tr>
 			<th>Produto</th>
 			<th>Valor</th>
+			<th>Desconto</th>
 			<th>Descrição</th>
-			<th>Situação</th>
+			<th>Usado?</th>
 			<th>Categoria</th>
 			<th>Alterar</th>
 			<th>Remover</th>
@@ -24,6 +25,7 @@ $produtos = listaProdutos($conexao);
 		<tr>
 			<td><?= $produto->getNome() ?></td>
 			<td><?= $produto->getPreco() ?></td>
+			<td><?= $produto->precoComDesconto(0.9) ?></td>
 			<td><?= $produto->getDescricao() ?></td>
 			<?php $produtoUsado = $produto->getUsado() == 1 ? "checked" : ""; ?>
 			<td><input type="checkbox" disabled <?= $produtoUsado ?>>Usado</td>

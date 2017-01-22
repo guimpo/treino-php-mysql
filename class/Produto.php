@@ -33,7 +33,9 @@ class Produto {
     return $this->preco;
   }
   function setPreco($preco) {
-    $this->preco = $preco;
+    if($preco > 0) {
+      $this->preco = $preco;
+    }
   }
   function getDescricao() {
     return $this->descricao;
@@ -50,10 +52,25 @@ class Produto {
     } else {
       $this->usado = 0;
     }
-
   }
   function getCategoria() {
     return $this->categoria;
+  }
+
+  function precoComDesconto($porcentagem) {
+    if($porcentagem >= 0 && $porcentagem <= 0.5) {
+      return $this->preco - ($this->preco * $porcentagem);
+    }
+    return $this->preco;
+  }
+
+  function precoComFrete($distancia) {
+    if($distancia > 10 && $distancia <= 20) {
+      return $this->preco + 10;
+    } elseif($distancia > 20) {
+      return $this->preco + 30;
+    }
+    return  $this->preco + 2;
   }
 }
 ?>
