@@ -1,11 +1,12 @@
 <?php
-require_once("conecta.php");
+require_once("cabecalho.php");
 
-class {
+
+class ProdutoDao {
 
 	private $conexao;
 
-	function __contruct($conexao) {
+	function __construct($conexao) {
 		$this->conexao = $conexao;
 	}
 
@@ -34,6 +35,7 @@ class {
 
 		$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado})";
 		return  mysqli_query($this->conexao, $query);
+
 	}
 
 	function buscaProduto(Produto $produto) {
