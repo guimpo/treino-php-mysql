@@ -1,5 +1,10 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
+
+spl_autoload_register(function($class) {
+	require_once("class/{$class}.php");
+});
+
 ?>
 <html>
 	<head>
@@ -9,8 +14,6 @@ error_reporting(E_ALL ^ E_NOTICE);
 		<link rel="stylesheet" href="css/loja.css">
 	</head>
 <?php
-require_once("class/Produto.php");
-require_once("class/Categoria.php");
 require_once("mostra-alerta.php");
 ?>
 <body>
