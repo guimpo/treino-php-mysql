@@ -1,14 +1,16 @@
 <?php
 require_once("cabecalho.php");
 require_once("banco-categoria.php");
-require_once("banco-produto.php");
+
+$produtoDao = new ProdutoDao($conexao);
 
 $categoria = new Categoria($categoria_id, $categoria_nome);
 $produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
 $produto->setId($_POST["id"]);
 
 $categorias = listaCategorias($conexao);
-$produto = buscaProduto($conexao, $produto);
+
+$produto = $produtoDao->buscaProduto($produto);
 
 ?>
 	<h1>Formulário de Alteração</h1>
