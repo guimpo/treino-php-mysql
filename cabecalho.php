@@ -5,6 +5,7 @@ spl_autoload_register(function($class) {
 	require_once("class/{$class}.php");
 });
 
+require_once("mostra-alerta.php");
 ?>
 <html>
 	<head>
@@ -13,9 +14,7 @@ spl_autoload_register(function($class) {
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/loja.css">
 	</head>
-<?php
-require_once("mostra-alerta.php");
-?>
+
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
