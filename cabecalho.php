@@ -5,8 +5,8 @@ spl_autoload_register(function($class) {
 	require_once("class/{$class}.php");
 });
 
-require_once("conecta.php");
 require_once("mostra-alerta.php");
+require_once("conecta.php");
 
 ?>
 <html>
@@ -35,7 +35,7 @@ require_once("mostra-alerta.php");
 	</div>
 <div class="container">
 <div class="principal">
-	
+
 <?php
 mostraAlerta("danger");
 mostraAlerta("success");
