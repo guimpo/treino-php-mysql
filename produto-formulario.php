@@ -1,12 +1,13 @@
 <?php
 require_once("cabecalho.php");
-require_once("banco-categoria.php");
 require_once("logica-usuario.php");
 
 verificaUsuario();
-?>
-<?php
-$categorias = listaCategorias($conexao);
+
+$categoriaDao = new CategoriaDao($conexao);
+
+$categorias = $categoriaDao->listaCategorias($conexao);
+
 $produto = new Produto($nome, $preco, $descricao, $usado, $categorias[0]);
 ?>
 	<h1>Formulário de Cadastro</h1>

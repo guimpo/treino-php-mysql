@@ -1,14 +1,14 @@
 <?php
 require_once("cabecalho.php");
-require_once("banco-categoria.php");
 
 $produtoDao = new ProdutoDao($conexao);
+$categoriaDao = new CategoriaDao($conexao);
 
 $categoria = new Categoria($categoria_id, $categoria_nome);
 $produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
 $produto->setId($_POST["id"]);
 
-$categorias = listaCategorias($conexao);
+$categorias = $categoriaDao->listaCategorias($conexao);
 
 $produto = $produtoDao->buscaProduto($produto);
 
