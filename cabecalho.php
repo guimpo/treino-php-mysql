@@ -35,6 +35,7 @@ require_once("mostra-alerta.php");
 	</div>
 <div class="container">
 <div class="principal">
+	
 <?php
 mostraAlerta("danger");
 mostraAlerta("success");
