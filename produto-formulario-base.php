@@ -22,7 +22,7 @@
 			<tr>
 				<td>ISBN</td>
 				<td>
-					<input type="text" class="form-control" value="<?= $produto->isLivro() ? $produto->getIsbn() : ""; ?>">
+					<input class="form-control" type="text" value="<?= $produto->isLivro() ? $produto->getIsbn() : ""; ?>" name="isbn">
 				</td>
 			</tr>
 			<tr>

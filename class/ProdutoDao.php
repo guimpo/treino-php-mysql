@@ -12,7 +12,10 @@ class ProdutoDao {
 
 	function listaProdutos() {
 		$produtos = array();
-		$query = "SELECT p.*, c.nome AS categoria_nome FROM produtos AS p JOIN categorias AS c ON c.id=p.categoria_id";
+		$query = "SELECT p.*, c.nome AS categoria_nome
+							FROM produtos AS p
+							JOIN categorias AS c
+							ON c.id=p.categoria_id";
 		$resultado = mysqli_query($this->conexao, $query);
 
 		while($produto_array = mysqli_fetch_assoc($resultado)) {
@@ -27,15 +30,23 @@ class ProdutoDao {
 	}
 
 	function insereProduto(Produto $produto) {
-		$nome = mysqli_real_escape_string($this->conexao, $produto->getNome());
-		$preco = mysqli_real_escape_string($this->conexao, $produto->getPreco());
-		$descricao = mysqli_real_escape_string($this->conexao, $produto->getDescricao());
-		$usado = mysqli_real_escape_string($this->conexao, $produto->getUsado());
-		$categoria = mysqli_real_escape_string($this->conexao, $produto->getCategoria()->getId());
+		$nome = $this->conexao->real_escape_string($produto->getNome());
+		$preco = $this->conexao->real_escape_string($produto->getPreco());
+		$descricao = $this->conexao->real_escape_string($produto->getDescricao());
+		$usado = $this->conexao->real_escape_string($produto->getUsado());
+		$categoria = $this->conexao->real_escape_string($produto->getCategoria()->getId());
+		$tipo = $this->conexao->real_escape_string($produto->getTipo());
 
-		$query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado})";
-		return  mysqli_query($this->conexao, $query);
+		if($produto->isLivro()) :
+			$isbn = $this->conexao->real_escape_string($produto->getIsbn());
+			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado, tipo_produto, isbn) VALUES
+											('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}', '{$isbn}')";
+		else :
+			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado) VALUES
+											('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}')";
+		endif;
 
+		return  $this->conexao->query($query);
 	}
 
 	function buscaProduto(Produto $produto) {

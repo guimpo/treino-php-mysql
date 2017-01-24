@@ -8,6 +8,7 @@ class Produto {
   private $descricao;
   private $usado;
   private $categoria;
+  private $tipo;
 
   function __construct($nome, $preco, $descricao, $usado, Categoria $categoria) {
     $this->nome = $nome;
@@ -17,6 +18,7 @@ class Produto {
     $this->descricao = $descricao;
     $this->setUsado($usado);
     $this->categoria = $categoria;
+    $this->tipo = get_class($this);
   }
 
   function getId() {
@@ -52,6 +54,10 @@ class Produto {
   }
   function getCategoria() {
     return $this->categoria;
+  }
+
+  function getTipo() {
+    return $this->tipo;
   }
 
   function precoComDesconto($porcentagem) {
