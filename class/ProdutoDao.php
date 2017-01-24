@@ -30,7 +30,7 @@ class ProdutoDao {
 				$produto = new Produto($produto_array["nome"], $produto_array["preco"],
 															 $produto_array["descricao"], $produto_array["usado"], $categoria);
 			endif;
-			
+
 			$produto->setId($produto_array["id"]);
 
 			array_push($produtos, $produto);
@@ -51,7 +51,7 @@ class ProdutoDao {
 			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado, tipo_produto, isbn) VALUES
 											('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}', '{$isbn}')";
 		else :
-			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado) VALUES
+			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado, tipo_produto) VALUES
 											('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}')";
 		endif;
 
@@ -87,9 +87,9 @@ class ProdutoDao {
 		$descricao = $this->conexao->real_escape_string($produto->getDescricao());
 		$usado = $this->conexao->real_escape_string($produto->getUsado());
 		$categoria = $this->conexao->real_escape_string($produto->getCategoria()->getId());
+		$tipo = $this->conexao->real_escape_string($produto->getTipo());
 
 		if($produto->isLivro()) :
-			$tipo = $this->conexao->real_escape_string($produto->getTipo());
 			$isbn = $this->conexao->real_escape_string($produto->getIsbn());
 			$query = "UPDATE produtos
 								SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
@@ -100,7 +100,7 @@ class ProdutoDao {
 			$query = "UPDATE produtos
 								SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
 								categoria_id = {$categoria}, usado = {$usado},
-								tipo_produto = '{$tipo}'
+								tipo_produto = '{$tipo}', isbn = NULL
 								WHERE id = {$id}";
 		endif;
 
