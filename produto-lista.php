@@ -10,11 +10,13 @@ $produtos = $produtoDao->listaProdutos();
 	<thead>
 		<tr>
 			<th>Produto</th>
-			<th>Valor</th>
+			<th>Preço</th>
 			<th>Desconto</th>
 			<th>Descrição</th>
 			<th>Usado?</th>
 			<th>Categoria</th>
+			<th>Tipo</th>
+			<th>ISBN</th>
 			<th>Alterar</th>
 			<th>Remover</th>
 		</tr>
@@ -24,11 +26,13 @@ $produtos = $produtoDao->listaProdutos();
 		<tr>
 			<td><?= $produto->getNome() ?></td>
 			<td><?= $produto->getPreco() ?></td>
-			<td><?= $produto->precoComDesconto(0.9) ?></td>
+			<td><?= $produto->precoComDesconto(0.5) ?></td>
 			<td><?= $produto->getDescricao() ?></td>
 			<?php $produtoUsado = $produto->getUsado() == 1 ? "checked" : ""; ?>
 			<td><input type="checkbox" disabled <?= $produtoUsado ?>>Usado</td>
 			<td><?=	$produto->getCategoria()->getNome() ?></td>
+			<td><?= $produto->getTipo() ?></td>
+			<td><?= $produto->isLivro() ? $produto->getIsbn() : "" ?></td>
 			<form action="produto-altera-formulario.php" method="post">
 				<td>
 					<button name="id" value="<?= $produto->getId() ?>" class="btn btn-primary">Alterar</button>

@@ -16,12 +16,21 @@ class ProdutoDao {
 							FROM produtos AS p
 							JOIN categorias AS c
 							ON c.id=p.categoria_id";
-		$resultado = mysqli_query($this->conexao, $query);
+		$resultado = $this->conexao->query($query);
 
 		while($produto_array = mysqli_fetch_assoc($resultado)) {
 
 			$categoria = new Categoria($produto_array["categoria_id"], $produto_array["categoria_nome"]);
-			$produto = new Produto($produto_array["nome"], $produto_array["preco"],$produto_array["descricao"], $produto_array["usado"], $categoria);
+
+			if($produto_array["tipo_produto"] == "Livro") :
+				$produto = new Livro($produto_array["nome"], $produto_array["preco"],
+														 $produto_array["descricao"], $produto_array["usado"], $categoria);
+				$produto->setIsbn($produto_array["isbn"]);
+			else :
+				$produto = new Produto($produto_array["nome"], $produto_array["preco"],
+															 $produto_array["descricao"], $produto_array["usado"], $categoria);
+			endif;
+			
 			$produto->setId($produto_array["id"]);
 
 			array_push($produtos, $produto);
