@@ -12,6 +12,7 @@ $produtos = $produtoDao->listaProdutos();
 			<th>Produto</th>
 			<th>Preço</th>
 			<th>Desconto</th>
+			<th>Imposto</th>
 			<th>Descrição</th>
 			<th>Usado?</th>
 			<th>Categoria</th>
@@ -27,6 +28,7 @@ $produtos = $produtoDao->listaProdutos();
 			<td><?= $produto->getNome() ?></td>
 			<td><?= $produto->getPreco() ?></td>
 			<td><?= $produto->precoComDesconto(0.5) ?></td>
+			<td><?= $produto->calculaImposto() ?></td>
 			<td><?= $produto->getDescricao() ?></td>
 			<?php $produtoUsado = $produto->getUsado() == 1 ? "checked" : ""; ?>
 			<td><input type="checkbox" disabled <?= $produtoUsado ?>>Usado</td>

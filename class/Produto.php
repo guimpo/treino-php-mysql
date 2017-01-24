@@ -80,6 +80,10 @@ class Produto {
     return $this instanceof Livro;
   }
 
+  function calculaImposto() {
+    return $this->preco * 0.195;
+  }
+
   function __toString() {
     return "</br>id:" . $this->id .
            "</br>nome: " . $this->nome .
