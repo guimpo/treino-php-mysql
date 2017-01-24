@@ -22,21 +22,27 @@ class Produto {
   function getId() {
     return $this->id;
   }
+
   function setId($id) {
     $this->id = $id;
   }
+
   function getNome() {
     return $this->nome;
   }
+
   function getPreco() {
     return $this->preco;
   }
+
   function getDescricao() {
     return $this->descricao;
   }
+
   function getUsado() {
     return $this->usado;
   }
+
   function setUsado($usado) {
     if($usado == 1 || $usado == "true") {
         $this->usado = 1;
@@ -62,6 +68,10 @@ class Produto {
       return $this->preco + 30;
     }
     return  $this->preco + 2;
+  }
+
+  function isLivro() {
+    return $this instanceof Livro;
   }
 
   function __toString() {
