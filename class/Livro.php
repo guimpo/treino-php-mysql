@@ -1,18 +1,14 @@
 <?php
 
-class Livro extends Produto {
+class LivroFisco extends Livro {
 
-  private $isbn;
+  private $taxaImpressao;
 
-  function getIsbn() {
-    return $this->isbn;
+  function getTaxaImpressao() {
+    return $this->taxaImpressao;
   }
 
-  function setIsbn($isbn) {
-    $this->isbn = $isbn;
-  }
-
-  function calculaImposto() {
-    return parent::getPreco() * 0.065;
+  function setTaxaImpressao($taxaImpressao) {
+    $this->taxaImpressao = $taxaImpressao;
   }
 }
