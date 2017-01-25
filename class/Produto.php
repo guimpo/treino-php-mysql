@@ -80,8 +80,28 @@ class Produto {
     return $this instanceof Livro;
   }
 
+  function isLivroFisico() {
+    return $this instanceof LivroFisico;
+  }
+
+  function isEbook() {
+    return $this instanceof Ebook;
+  }
+
   function calculaImposto() {
     return $this->preco * 0.195;
+  }
+
+  function atualizaBaseadoEm($params) {
+    if($this->isLivro()) {
+      $this->setIsbn($params["isbn"]);
+    }
+    if($this->isEbook()) {
+      $this->setWaterMark($params["waterMark"]);
+    }
+    if($this->isLivroFisico) {
+      $this->setTaxaImpressao($params["taxaImpressao"]);
+    }
   }
 
   function __toString() {
