@@ -1,14 +1,14 @@
 <?php
 
-class Ebook extends Livro {
+class LivroFisco extends Livro {
 
-  private $waterMark;
+  private $taxaImpressao;
 
-  function getWaterMark() {
-    return $this->waterMark;
+  function getTaxaImpressao() {
+    return $this->taxaImpressao;
   }
 
-  function setWaterMark($waterMark) {
-    $this->waterMark= $waterMark;
+  function setTaxaImpressao($taxaImpressao) {
+    $this->taxaImpressao = $taxaImpressao;
   }
 }
