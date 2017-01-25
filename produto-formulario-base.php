@@ -4,18 +4,22 @@
 				<td>Tipo</td>
 				<td>
 					<select class="form-control" name="tipo">
-						<?php
-							$tipos = array("Livro", "Produto");
+						<?php	$tipos = array("Produto", "LivroFisico", "Ebook");
 							foreach($tipos as $tipo) :
-								$tipo_do_produto = get_class($produto) == $tipo;
-								$seleciona = $tipo_do_produto ? "selected='selected'" : "";
-						?>
-								<option value="<?= $tipo ?>" <?= $seleciona ?>>
-									<?= $tipo ?>
-								</option>
-						<?php
-							endforeach
-						?>
+								$seleciona = get_class($produto) == $tipo ? "selected='selected'" : "";
+
+								if($tipo == "LivroFisico") : ?>
+										<optgroup label="Livros">
+								<?php endif;
+
+								$tipo == "LivroFisico" ? $mostra = "Livro Físico" : $mostra = $tipo; ?>
+								<option value="<?= $tipo  ?>" <?= $seleciona ?>>	<?= $mostra ?> </option>
+
+								<?php if($tipo == "Ebook") : ?>
+										</optgroup>
+								<?php endif; ?>
+
+							<?php	endforeach ?>
 					</select>
 				</td>
 			</tr>
