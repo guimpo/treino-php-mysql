@@ -13,6 +13,8 @@ $produtos = $produtoDao->listaProdutos();
 			<th>Preço</th>
 			<th>Desconto</th>
 			<th>Imposto</th>
+			<th>Taxa Impressão</th>
+			<th>Marca d'água</th>
 			<th>Descrição</th>
 			<th>Usado?</th>
 			<th>Categoria</th>
@@ -29,6 +31,8 @@ $produtos = $produtoDao->listaProdutos();
 			<td><?= $produto->getPreco() ?></td>
 			<td><?= $produto->precoComDesconto(0.5) ?></td>
 			<td><?= $produto->calculaImposto() ?></td>
+			<td><?= $produto->isLivroFisico() ? $produto->getTaxaImpressao() : "" ?></td>
+			<td><?= $produto->isEbook() ? $produto->getWaterMark() : "" ?></td>
 			<td><?= $produto->getDescricao() ?></td>
 			<?php $produtoUsado = $produto->getUsado() == 1 ? "checked" : ""; ?>
 			<td><input type="checkbox" disabled <?= $produtoUsado ?>>Usado</td>
