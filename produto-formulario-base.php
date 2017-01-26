@@ -30,6 +30,14 @@
 				</td>
 			</tr>
 			<tr>
+				<td>Taxa de Impressão</td>
+				<td><input class="form-control" type="number" name="taxaImpressao" value="<?= $produto->isLivroFisico() ? $produto->getTaxaImpressao() : ""?>"></td>
+			</tr>
+			<tr>
+				<td>Marca d'água</td>
+				<td><input class="form-control" type="number" name="waterMark" value="<?= $produto->isEbook() ? $produto->getWaterMark() : ""?>"></td>
+			</tr>
+			<tr>
 				<td>Preço</td>
 				<td><input class="form-control" type="number" name="preco" value=<?= $produto->getPreco() ?>></td>
 			</tr>
