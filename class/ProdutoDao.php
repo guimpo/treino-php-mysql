@@ -43,8 +43,21 @@ class ProdutoDao {
 
 		if($produto->isLivro()) :
 			$isbn = $this->conexao->real_escape_string($produto->getIsbn());
-			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado, tipo_produto, isbn) VALUES
-											('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}', '{$isbn}')";
+
+			if($produto->isLivroFisico()) :
+				$taxaImpressao = $this->conexao->real_escape_string($produto->getTaxaImpressao());
+
+				$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado,
+																				tipo_produto, isbn, taxaImpressao)
+									VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado},
+													'{$tipo}', '{$isbn}', '{$taxaImpressao}')";
+			else :
+				$waterMark = $this->conexao->real_escape_string($produto->getWaterMark());
+				$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado,
+																				tipo_produto, isbn)
+									VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado},
+													'{$tipo}', '{$isbn}', '{$waterMark}')";
+			endif;
 		else :
 			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado, tipo_produto) VALUES
 											('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}')";

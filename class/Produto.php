@@ -99,7 +99,8 @@ class Produto {
     if($this->isEbook()) {
       $this->setWaterMark($params["waterMark"]);
     }
-    if($this->isLivroFisico) {
+
+    if($this->isLivroFisico()) {
       $this->setTaxaImpressao($params["taxaImpressao"]);
     }
   }

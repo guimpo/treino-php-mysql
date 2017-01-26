@@ -13,7 +13,7 @@
 								<?php endif;
 
 								$tipo == "LivroFisico" ? $mostra = "Livro Físico" : $mostra = $tipo; ?>
-								<option value="<?= $tipoProduto  ?>" <?= $seleciona ?>>	<?= $mostra ?> </option>
+								<option value="<?= $tipo ?>" <?= $seleciona ?>>	<?= $mostra ?> </option>
 
 								<?php if($tipo == "Ebook") : ?>
 										</optgroup>
