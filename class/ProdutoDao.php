@@ -73,13 +73,12 @@ class ProdutoDao {
 		$resultado =  $this->conexao->query($query);
 		$produto_array =  mysqli_fetch_assoc($resultado);
 		$categoria = new Categoria($produto_array["categoria_id"], $nome);
-		$tipoProduto = $produto_array["tipoProduto"];
 
 		$factory = new ProdutoFactory();
 		$produto = $factory->criaPor($tipoProduto, $produto_array);
 		$produto->atualizaBaseadoEm($produto_array);
 		$produto->setId($produto_array["id"]);
-		
+
 		return $produto;
 	}
 
@@ -94,16 +93,32 @@ class ProdutoDao {
 
 		if($produto->isLivro()) :
 			$isbn = $this->conexao->real_escape_string($produto->getIsbn());
-			$query = "UPDATE produtos
-								SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
-								categoria_id = {$categoria}, usado = {$usado},
-								tipoProduto = '{$tipo}', isbn = '{$isbn}'
-								WHERE id = {$id}";
+
+			if($produto->isLivroFisico()) :
+				$taxaImpressao = $this->conexao->real_escape_string($produto->getTaxaImpressao());
+				$query = "UPDATE produtos
+									SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
+									categoria_id = {$categoria}, usado = {$usado},
+									tipoProduto = '{$tipo}', isbn = '{$isbn}',
+									taxaImpressao = {$taxaImpressao}, waterMark = NULL
+									WHERE id = {$id}";
+
+			else :
+				$waterMark = $this->conexao->real_escape_string($produto->getWaterMark());
+				$query = "UPDATE produtos
+									SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
+									categoria_id = {$categoria}, usado = {$usado},
+									tipoProduto = '{$tipo}', isbn = '{$isbn}',
+									taxaImpressao = NULL, waterMark = {$waterMark}
+									WHERE id = {$id}";
+			endif;
+
 		else :
 			$query = "UPDATE produtos
 								SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
 								categoria_id = {$categoria}, usado = {$usado},
-								tipoProduto = '{$tipo}', isbn = NULL
+								tipoProduto = '{$tipo}', isbn = NULL,
+								taxaImpressao = NULL, waterMark = NULL
 								WHERE id = {$id}";
 		endif;
 
