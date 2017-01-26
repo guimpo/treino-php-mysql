@@ -54,7 +54,7 @@ class ProdutoDao {
 			else :
 				$waterMark = $this->conexao->real_escape_string($produto->getWaterMark());
 				$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado,
-																				tipo_produto, isbn)
+																				tipo_produto, isbn, waterMark)
 									VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado},
 													'{$tipo}', '{$isbn}', '{$waterMark}')";
 			endif;
