@@ -3,25 +3,13 @@ require_once("cabecalho.php");
 require_once("logica-usuario.php");
 
 verificaUsuario();
+$tipoProduto = $_POST["tipoProduto"];
+
 $produtoDao = new ProdutoDao($conexao);
-$categoria = new Categoria($_POST["categoria_id"], $categoria_nome);
 
-$id = $_POST["id"];
-$nome = $_POST["nome"];
-$preco = $_POST["preco"];
-$descricao = $_POST["descricao"];
-$usado = $_POST["usado"];
-$tipo = $_POST["tipo"];
-$isbn = $_POST["isbn"];
+$factory = new ProdutoFactory();
 
-if($tipo == "Livro") :
-  $produto = new Livro($nome, $preco, $descricao, $usado, $categoria);
-  $produto->setId($id);
-  $produto->setIsbn($isbn);
-else :
-  $produto = new Produto($nome, $preco, $descricao, $usado, $categoria);
-  $produto->setId($id);
-endif;
+$produto = $factory->criaPor($tipoProduto, $_POST);
 
 if($produtoDao->alteraProduto($produto)) {
   header("Location: produto-lista.php");
