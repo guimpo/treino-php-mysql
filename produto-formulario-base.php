@@ -3,7 +3,7 @@
 			<tr>
 				<td>Tipo</td>
 				<td>
-					<select class="form-control" name="tipo">
+					<select class="form-control" name="tipoProduto">
 						<?php	$tipos = array("Produto", "LivroFisico", "Ebook");
 							foreach($tipos as $tipo) :
 								$seleciona = get_class($produto) == $tipo ? "selected='selected'" : "";
@@ -13,7 +13,7 @@
 								<?php endif;
 
 								$tipo == "LivroFisico" ? $mostra = "Livro Físico" : $mostra = $tipo; ?>
-								<option value="<?= $tipo  ?>" <?= $seleciona ?>>	<?= $mostra ?> </option>
+								<option value="<?= $tipoProduto  ?>" <?= $seleciona ?>>	<?= $mostra ?> </option>
 
 								<?php if($tipo == "Ebook") : ?>
 										</optgroup>
