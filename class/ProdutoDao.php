@@ -22,15 +22,10 @@ class ProdutoDao {
 
 			$categoria = new Categoria($produto_array["categoria_id"], $produto_array["categoria_nome"]);
 
-			if($produto_array["tipo_produto"] == "Livro") :
-				$produto = new Livro($produto_array["nome"], $produto_array["preco"],
-														 $produto_array["descricao"], $produto_array["usado"], $categoria);
-				$produto->setIsbn($produto_array["isbn"]);
-			else :
-				$produto = new Produto($produto_array["nome"], $produto_array["preco"],
-															 $produto_array["descricao"], $produto_array["usado"], $categoria);
-			endif;
-
+			$tipoProduto = $produto_array["tipo_produto"];
+			$factory = new ProdutoFactory();
+			$produto = $factory->criaPor($tipoProduto, $produto_array);
+			$produto->atualizaBaseadoEm($produto_array);
 			$produto->setId($produto_array["id"]);
 
 			array_push($produtos, $produto);

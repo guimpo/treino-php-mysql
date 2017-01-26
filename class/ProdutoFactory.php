@@ -10,15 +10,14 @@ class ProdutoFactory {
     $descricao = $params["descricao"];
     $categoria_id = $params["categoria_id"];
     $categoria_nome = $params["categoria_nome"];
-    $categoria = new Categoria($categoria_nome);
-    $categoria->setId($categoria_id);
+    $categoria = new Categoria($categoria_id, $categoria_nome);
     $usado = $params["usado"];
 
     if(in_array($tipoProduto, $this->classes)) {
-      return new $tipoProduto($nome, $preco, $descricao, $categoria, $usado);
+      return new $tipoProduto($nome, $preco, $descricao, $usado, $categoria);
     }
 
-    return new Produto($nome, $preco, $descricao, $categoria, $usado);
+    return new Produto($nome, $preco, $descricao, $usado, $categoria);
   }
 }
 ?>
