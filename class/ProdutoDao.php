@@ -22,7 +22,7 @@ class ProdutoDao {
 
 			$categoria = new Categoria($produto_array["categoria_id"], $produto_array["categoria_nome"]);
 
-			$tipoProduto = $produto_array["tipo_produto"];
+			$tipoProduto = $produto_array["tipoProduto"];
 			$factory = new ProdutoFactory();
 			$produto = $factory->criaPor($tipoProduto, $produto_array);
 			$produto->atualizaBaseadoEm($produto_array);
@@ -48,19 +48,20 @@ class ProdutoDao {
 				$taxaImpressao = $this->conexao->real_escape_string($produto->getTaxaImpressao());
 
 				$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado,
-																				tipo_produto, isbn, taxaImpressao)
+																				tipoProduto, isbn, taxaImpressao)
 									VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado},
 													'{$tipo}', '{$isbn}', '{$taxaImpressao}')";
 			else :
 				$waterMark = $this->conexao->real_escape_string($produto->getWaterMark());
 				$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado,
-																				tipo_produto, isbn, waterMark)
+																				tipoProduto, isbn, waterMark)
 									VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado},
 													'{$tipo}', '{$isbn}', '{$waterMark}')";
 			endif;
+
 		else :
-			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado, tipo_produto) VALUES
-											('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}')";
+			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado, tipoProduto)
+								VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}')";
 		endif;
 
 		return  $this->conexao->query($query);
@@ -72,19 +73,13 @@ class ProdutoDao {
 		$resultado =  $this->conexao->query($query);
 		$produto_array =  mysqli_fetch_assoc($resultado);
 		$categoria = new Categoria($produto_array["categoria_id"], $nome);
+		$tipoProduto = $produto_array["tipoProduto"];
 
-		if(isset($produto_array["isbn"])) :
-			$produto = new Livro($produto_array["nome"], $produto_array["preco"],
-														 $produto_array["descricao"], $produto_array["usado"],
-														 $categoria);
-			$produto->setIsbn($produto_array["isbn"]);
-		else :
-			$produto = new Produto($produto_array["nome"], $produto_array["preco"],
-														 $produto_array["descricao"], $produto_array["usado"],
-														 $categoria);
-		endif;
-
+		$factory = new ProdutoFactory();
+		$produto = $factory->criaPor($tipoProduto, $produto_array);
+		$produto->atualizaBaseadoEm($produto_array);
 		$produto->setId($produto_array["id"]);
+		
 		return $produto;
 	}
 
@@ -102,13 +97,13 @@ class ProdutoDao {
 			$query = "UPDATE produtos
 								SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
 								categoria_id = {$categoria}, usado = {$usado},
-								tipo_produto = '{$tipo}', isbn = '{$isbn}'
+								tipoProduto = '{$tipo}', isbn = '{$isbn}'
 								WHERE id = {$id}";
 		else :
 			$query = "UPDATE produtos
 								SET nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}',
 								categoria_id = {$categoria}, usado = {$usado},
-								tipo_produto = '{$tipo}', isbn = NULL
+								tipoProduto = '{$tipo}', isbn = NULL
 								WHERE id = {$id}";
 		endif;
 
