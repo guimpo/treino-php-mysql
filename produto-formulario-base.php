@@ -4,7 +4,7 @@
 				<td>Tipo</td>
 				<td>
 					<select class="form-control" name="tipoProduto">
-						<?php	$tipos = array("Produto", "LivroFisico", "Ebook");
+						<?php	$tipos = array("LivroFisico", "Ebook");
 							foreach($tipos as $tipo) :
 								$seleciona = get_class($produto) == $tipo ? "selected='selected'" : "";
 

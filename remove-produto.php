@@ -6,7 +6,7 @@ $produtoDao = new ProdutoDao($conexao);
 
 $categoria = new Categoria($categoria_id, $categoria_nome);
 
-$produto = new Produto($produto_nome, $produto_preco, $produto_descricao, $produto_usado, $categoria);
+$produto = new LivroFisico($produto_nome, $produto_preco, $produto_descricao, $produto_usado, $categoria);
 
 $produto->setId($_POST["id"]);
 

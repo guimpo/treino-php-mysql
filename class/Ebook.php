@@ -14,6 +14,6 @@ class Ebook extends Livro {
 
   function atualizaBaseadoEm($params) {
     $this->setIsbn($params["isbn"]);
-    $this->setTaxaImpressao($params["taxaImpressao"]);
+    $this->setWaterMark($params["waterMark"]);
   }
 }

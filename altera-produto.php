@@ -17,10 +17,10 @@ $produto->setId($_POST["id"]);
 
 if($produtoDao->alteraProduto($produto)) {
   header("Location: produto-lista.php");
-  $_SESSION["success"] = "Produto {$nome}, alterado!";
+  $_SESSION["success"] = "Produto {$produto->getNome()}, alterado!";
 } else {
   header("Location: produto-lista.php");
-  $_SESSION["danger"] = "Produto {$nome}, não foi alterado!";
+  $_SESSION["danger"] = "Produto {$produto->getNome()}, não foi alterado!";
 }
 
 die();

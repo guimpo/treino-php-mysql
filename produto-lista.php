@@ -11,8 +11,8 @@ $produtos = $produtoDao->listaProdutos();
 		<tr>
 			<th>Produto</th>
 			<th>Preço</th>
-			<th>Desconto</th>
-			<th>Imposto</th>
+			<!-- <th>Desconto</th> -->
+			<!-- <th>Imposto</th> -->
 			<th>Taxa Impressão</th>
 			<th>Marca d'água</th>
 			<th>Descrição</th>
@@ -29,8 +29,8 @@ $produtos = $produtoDao->listaProdutos();
 		<tr>
 			<td><?= $produto->getNome() ?></td>
 			<td><?= $produto->getPreco() ?></td>
-			<td><?= $produto->precoComDesconto(0.5) ?></td>
-			<td><?= $produto->calculaImposto() ?></td>
+			<!-- <td><?= $produto->precoComDesconto(0.5) ?></td> -->
+			<!-- <td><?= $produto->calculaImposto() ?></td> -->
 			<td><?= $produto->isLivroFisico() ? $produto->getTaxaImpressao() : "" ?></td>
 			<td><?= $produto->isEbook() ? $produto->getWaterMark() : "" ?></td>
 			<td><?= $produto->getDescricao() ?></td>

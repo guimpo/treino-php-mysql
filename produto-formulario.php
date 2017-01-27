@@ -8,7 +8,7 @@ $categoriaDao = new CategoriaDao($conexao);
 
 $categorias = $categoriaDao->listaCategorias($conexao);
 
-$produto = new Produto($nome, $preco, $descricao, $usado, $categorias[0]);
+$produto = new LivroFisico($nome, $preco, $descricao, $usado, $categorias[0]);
 ?>
 	<h1>Formulário de Cadastro</h1>
 	<form action="adiciona-produto.php" method="post">

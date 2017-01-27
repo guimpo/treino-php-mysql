@@ -17,11 +17,11 @@ $produtoDao = new ProdutoDao($conexao);
 
 
 if($produtoDao->insereProduto($produto)) :
-	$_SESSION["success"] = "Produto {$nome}, {$preco}, adicionado com sucesso!";
+	$_SESSION["success"] = "Produto {$produto->getNome()}, {$produto->getPreco()}, adicionado com sucesso!";
 	header("Location: produto-lista.php");
 else :
 	$msg = mysqli_error($conexao);
-	$_SESSION["danger"] = "Produto {$nome} não foi adicionado: {$msg}";
+	$_SESSION["danger"] = "Produto {$produto->getNome()} não foi adicionado: {$msg}";
 	header("Location: produto-formulario.php");
 endif;
 die();
