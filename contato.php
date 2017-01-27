@@ -1,5 +1,7 @@
 <?php require_once("cabecalho.php"); ?>
 
+<p class="alert-danger">Esta funcionalidade foi desabilitada</p>
+
 <form action="envia-contato.php" method="post" class="form-horizontal">
 	<div class="form-group">
 		<label for="nome" class="col-sm-2">Nome</label>
@@ -17,4 +19,5 @@
 	</div>
 	<button type="submit" class="btn btn-default">Enviar</button>
 </form>
+
 <?php require_once("rodape.php"); ?>
