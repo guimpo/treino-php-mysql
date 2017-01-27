@@ -1,6 +1,6 @@
 <?php
 
-class Produto {
+abstract class Produto {
 
   private $id;
   private $nome;
@@ -92,18 +92,7 @@ class Produto {
     return $this->preco * 0.195;
   }
 
-  function atualizaBaseadoEm($params) {
-    if($this->isLivro()) {
-      $this->setIsbn($params["isbn"]);
-    }
-    if($this->isEbook()) {
-      $this->setWaterMark($params["waterMark"]);
-    }
-
-    if($this->isLivroFisico()) {
-      $this->setTaxaImpressao($params["taxaImpressao"]);
-    }
-  }
+  abstract function atualizaBaseadoEm($params);
 
   function __toString() {
     return "</br>id:" . $this->id .
