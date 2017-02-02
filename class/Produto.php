@@ -2,108 +2,114 @@
 
 abstract class Produto {
 
-  private $id;
-  private $nome;
-  private $preco;
-  private $descricao;
-  private $usado;
-  private $categoria;
-  private $tipo;
+    private $id;
+    private $nome;
+    private $preco;
+    private $descricao;
+    private $usado;
+    private $categoria;
+    private $tipo;
 
-  function __construct($nome, $preco, $descricao, $usado, Categoria $categoria) {
-    $this->nome = $nome;
-    if($preco > 0) {
-      $this->preco = $preco;
+    function __construct($nome, $preco, $descricao, $usado, Categoria $categoria) {
+
+        $this->nome = $nome;
+
+        if($preco > 0) {
+            $this->preco = $preco;
+        }
+
+        $this->descricao = $descricao;
+        $this->setUsado($usado);
+        $this->categoria = $categoria;
+        $this->tipo = get_class($this);
     }
-    $this->descricao = $descricao;
-    $this->setUsado($usado);
-    $this->categoria = $categoria;
-    $this->tipo = get_class($this);
-  }
 
-  function getId() {
-    return $this->id;
-  }
-
-  function setId($id) {
-    $this->id = $id;
-  }
-
-  function getNome() {
-    return $this->nome;
-  }
-
-  function getPreco() {
-    return $this->preco;
-  }
-
-  function getDescricao() {
-    return $this->descricao;
-  }
-
-  function getUsado() {
-    return $this->usado;
-  }
-
-  function setUsado($usado) {
-    if($usado == 1 || $usado == "true") {
-        $this->usado = 1;
-    } else {
-      $this->usado = 0;
+    function getId() {
+        return $this->id;
     }
-  }
-  function getCategoria() {
-    return $this->categoria;
-  }
 
-  function getTipo() {
-    return $this->tipo;
-  }
-
-  function precoComDesconto($porcentagem) {
-    if($porcentagem >= 0 && $porcentagem <= 0.5) {
-      return $this->preco - ($this->preco * $porcentagem);
+    function setId($id) {
+        $this->id = $id;
     }
-    return $this->preco;
-  }
 
-  function precoComFrete($distancia) {
-    if($distancia > 10 && $distancia <= 20) {
-      return $this->preco + 10;
-    } elseif($distancia > 20) {
-      return $this->preco + 30;
+    function getNome() {
+        return $this->nome;
     }
-    return  $this->preco + 2;
-  }
 
-  function isLivro() {
-    return $this instanceof Livro;
-  }
+    function getPreco() {
+        return $this->preco;
+    }
 
-  function isLivroFisico() {
-    return $this instanceof LivroFisico;
-  }
+    function getDescricao() {
+        return $this->descricao;
+    }
 
-  function isEbook() {
-    return $this instanceof Ebook;
-  }
+    function getUsado() {
+        return $this->usado;
+    }
 
-  function calculaImposto() {
-    return $this->preco * 0.195;
-  }
+    function setUsado($usado) {
 
-  abstract function atualizaBaseadoEm($params);
+        if($usado == 1 || $usado == "true") {
+            $this->usado = 1;
+        } else {
+            $this->usado = 0;
+        }
+    }
+    function getCategoria() {
+        return $this->categoria;
+    }
 
-  function __toString() {
-    return "</br>id:" . $this->id .
-           "</br>nome: " . $this->nome .
-           "</br>preco: " . $this->preco .
-           "</br>desconto: " . $this->precoComDesconto(0.5) .
-           "</br>descricao: " . $this->descricao .
-           "</br>usado?: " .  $this->usado .
-           "</br>categoria_id: " . $this->categoria->getId() .
-           "</br>categoria_nome: " . $this->categoria->getNome() .
-           "</br>frete: " . $this->precoComFrete(2);
-  }
+    function getTipo() {
+        return $this->tipo;
+    }
+
+    function precoComDesconto($porcentagem) {
+
+        if($porcentagem >= 0 && $porcentagem <= 0.5) {
+            return $this->preco - ($this->preco * $porcentagem);
+        }
+        return $this->preco;
+    }
+
+    function precoComFrete($distancia) {
+
+        if($distancia > 10 && $distancia <= 20) {
+            return $this->preco + 10;
+        } elseif($distancia > 20) {
+            return $this->preco + 30;
+        }
+        return  $this->preco + 2;
+    }
+
+    function isLivro() {
+        return $this instanceof Livro;
+    }
+
+    function isLivroFisico() {
+        return $this instanceof LivroFisico;
+    }
+
+    function isEbook() {
+        return $this instanceof Ebook;
+    }
+
+    function calculaImposto() {
+        return $this->preco * 0.195;
+    }
+
+    abstract function atualizaBaseadoEm($params);
+
+    function __toString() {
+        return "</br>id:" . $this->id .
+               "</br>nome: " . $this->nome .
+               "</br>preco: " . $this->preco .
+               "</br>desconto: " . $this->precoComDesconto(0.5) .
+               "</br>descricao: " . $this->descricao .
+               "</br>usado?: " .  $this->usado .
+               "</br>categoria_id: " . $this->categoria->getId() .
+               "</br>categoria_nome: " . $this->categoria->getNome() .
+               "</br>frete: " . $this->precoComFrete(2);
+    }
 }
 ?>

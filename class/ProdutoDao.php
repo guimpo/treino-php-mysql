@@ -1,7 +1,6 @@
 <?php
 require_once("cabecalho.php");
 
-
 class ProdutoDao {
 
 	private $conexao;
@@ -11,6 +10,7 @@ class ProdutoDao {
 	}
 
 	function listaProdutos() {
+
 		$produtos = array();
 		$query = "SELECT p.*, c.nome AS categoria_nome
 							FROM produtos AS p
@@ -34,6 +34,7 @@ class ProdutoDao {
 	}
 
 	function insereProduto(Produto $produto) {
+
 		$nome = $this->conexao->real_escape_string($produto->getNome());
 		$preco = $this->conexao->real_escape_string($produto->getPreco());
 		$descricao = $this->conexao->real_escape_string($produto->getDescricao());
@@ -58,7 +59,6 @@ class ProdutoDao {
 									VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado},
 													'{$tipo}', '{$isbn}', '{$waterMark}')";
 			endif;
-
 		else :
 			$query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado, tipoProduto)
 								VALUES ('{$nome}', {$preco}, '{$descricao}', {$categoria}, {$usado}, '{$tipo}')";

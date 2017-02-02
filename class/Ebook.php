@@ -2,18 +2,18 @@
 
 class Ebook extends Livro {
 
-  private $waterMark;
+    private $waterMark;
 
-  function getWaterMark() {
-    return $this->waterMark;
-  }
+    function getWaterMark() {
+        return $this->waterMark;
+    }
 
-  function setWaterMark($waterMark) {
-    $this->waterMark= $waterMark;
-  }
+    function setWaterMark($waterMark) {
+        $this->waterMark= $waterMark;
+    }
 
-  function atualizaBaseadoEm($params) {
-    $this->setIsbn($params["isbn"]);
-    $this->setWaterMark($params["waterMark"]);
-  }
+    function atualizaBaseadoEm($params) {
+        $this->setIsbn($params["isbn"]);
+        $this->setWaterMark($params["waterMark"]);
+    }
 }

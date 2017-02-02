@@ -7,6 +7,5 @@ if($usuario == null) {
 	$_SESSION["danger"] = "Usuário ou senha incorreta";
 	die();
 } else {
-		logaUsuario($_POST["email"]);
+	logaUsuario($_POST["email"]);
 }
-

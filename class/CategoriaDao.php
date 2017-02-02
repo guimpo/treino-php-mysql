@@ -10,6 +10,7 @@ class CategoriaDao {
 	}
 
 	function listaCategorias() {
+
 		$categorias = array();
 		$query = "SELECT * FROM categorias;";
 		$resultado = mysqli_query($this->conexao, $query);
@@ -20,7 +21,7 @@ class CategoriaDao {
 			$categoria = new Categoria($id, $nome);
 			array_push($categorias, $categoria);
 		}
-		return $categorias;
+	return $categorias;
 	}
 }
 

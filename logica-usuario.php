@@ -1,7 +1,8 @@
 <?php
 session_start();
+
 function usuarioEstaLogado() {
-	return isset($_SESSION["usuario_logado"]); 
+	return isset($_SESSION["usuario_logado"]);
 }
 
 function verificaUsuario() {
@@ -13,8 +14,8 @@ function verificaUsuario() {
 }
 
 	function usuarioLogado() {
-	return $_SESSION["usuario_logado"];
-}
+		return $_SESSION["usuario_logado"];
+	}
 
 function logaUsuario($email) {
 	$_SESSION["usuario_logado"] = $email;
@@ -28,4 +29,3 @@ function logout() {
 	$_SESSION["success"] = "Deslogado com sucesso!";
 	header("Location: index.php");
 }
-

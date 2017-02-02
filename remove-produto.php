@@ -11,11 +11,11 @@ $produto = new LivroFisico($produto_nome, $produto_preco, $produto_descricao, $p
 $produto->setId($_POST["id"]);
 
 if($produtoDao->removeProduto($produto)) :
-  header("Location: produto-lista.php");
-  $_SESSION["success"] = "Produto removido!";
+    header("Location: produto-lista.php");
+    $_SESSION["success"] = "Produto removido!";
 else :
-  header("Location: produto-lista.php");
-  $msg = mysqli_error($conexao);
-  $_SESSION["danger"] = "Produto não foi removido: {$msg}";
+    header("Location: produto-lista.php");
+    $msg = mysqli_error($conexao);
+    $_SESSION["danger"] = "Produto não foi removido: {$msg}";
 endif;
 die();

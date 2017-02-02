@@ -23,10 +23,10 @@ $mail->msgHTML("<html>de: {$nome}<br/>email: {$email}<br/>mensagem: {$mensagem}<
 $mail->AltBody = "de: {$nome}\nemail:{$email}\nmensagem: {$mensagem}";
 
 if($mail->send()) {
-  $_SESSION["success"] = "Mensagem enviada com sucesso";
-  header("Location: index.php");
+    $_SESSION["success"] = "Mensagem enviada com sucesso";
+    header("Location: index.php");
 } else {
-  $_SESSION["danger"] = "Erro ao enviar mensagem" . $mail->ErrorInfo;
-  header("Location: contato.php");
+    $_SESSION["danger"] = "Erro ao enviar mensagem" . $mail->ErrorInfo;
+    header("Location: contato.php");
 }
 die();
