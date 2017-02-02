@@ -1,4 +1,4 @@
-#CRUD php-mysql
+#CRUD php-mysql (curso alura)
 
 os arquivos da pasta phpMailer foram copiados deste repositório: https://github.com/PHPMailer/PHPMailer
 
